@@ -20,8 +20,7 @@ services:
     startCommand: npx serve -s dist -l $PORT
     plan: free
     envVars:
+      # property: host returns the bare internal host (no .onrender.com), which
+      # is not resolvable from the browser. Point at the server's public URL.
       - key: VITE_WS_URL
-        fromService:
-          name: agile-poker-server
-          type: web
-          property: host
+        value: https://agile-poker-server-weje.onrender.com
